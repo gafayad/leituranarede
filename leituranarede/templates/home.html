@@ -1,0 +1,38 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link href="{% static 'styles/home.css' %}" rel="stylesheet"/>
+  <!-- Owl Carousel -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.carousel.min.css">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/OwlCarousel2/2.3.4/assets/owl.theme.default.min.css">
+{% endblock %}
+
+{% block title %}Leitura na Rede{% endblock %}
+
+<!-- Main -->
+{% block content %}
+<div class="banner">
+      <img src="{% static 'images/banner leituranarede.jpg' %}" alt="Imagem de fundo" class="responsive-image">
+</div>
+<!-- Carrossel -->
+<section id="carousel" class="carousel owl-carousel">
+  {% for cartao in cartoes %}
+  <div class="item">
+    <div class="card">
+      <img src="{{ cartao.get_imagem }}" class="card-img-top" alt="{{ cartao.titulo }}">
+      <div class="card-body">
+        <h1 class="card-title">{{ cartao.titulo }}</h1>
+        <p class="card-text">{{ cartao.descricao|linebreaksbr }}</p>
+      </div>
+    </div>
+  </div>
+  {% endfor %}
+</section>
+
+
+{% endblock %}
+
+<!-- Script -->
+{% block script %}
+<script src="{% static 'scripts/home.js' %}"></script>
+{% endblock %}

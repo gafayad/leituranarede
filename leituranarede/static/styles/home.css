@@ -1,0 +1,27 @@
+/*Banner*/
+.banner {
+  display: flex;
+  justify-content: center; /* Horizontally center the content */
+  align-items: center; /* Vertically center the content */
+  position: relative;
+  padding: 0;
+}
+
+.banner img {
+  width: 100%;
+  height: auto;
+}
+
+/* Carousel */ 
+.card img {
+  height: 10rem;
+  width: auto;
+}
+
+.card-title{
+  font-size: 1.5rem;
+}
+
+.card-texto{
+  font-size: 1rem;
+}

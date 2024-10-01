@@ -1,0 +1,47 @@
+{% extends "base_dicas.html" %}
+{% load static %}
+{% block styles %}
+  <link href="{% static 'styles/entrar.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Login{% endblock %}
+
+<!-- Main -->
+{% block content %}
+<!-- Entrar -->
+<section class="login container-fluid">
+    <h1>Login:</h1>
+    <form id="loginForm">
+  <div>
+    <label for="email" class="form-label">Email:</label>
+    <input type="email" class="form-control" id="email" placeholder="Email">
+    <div class="erro" id="emailError">*Pensar em uma mensagem para emails não encontrados na nossa base de dados.</div>
+  </div>
+  <div class="position-relative">
+    <label for="senha" class="form-label">Senha:</label>
+    <div class="input-group">
+      <input type="password" class="form-control" id="senha" placeholder="Senha">
+        <span class="input-group-text">
+          <i class="far fa-eye" id="toggleSenha" style="cursor: pointer;"></i>
+        </span>
+    </div>
+    <div class="erro" id="senhaRequisitos">*Pensar em uma mensagem para senhas não relacionadas ao email.</div>
+  </div>
+  <div class="d-grid gap-2 justify-content-sm-end">
+    <button type="submit" class="btn btn-lg float-right">Enviar</button>
+  </div>
+</form>
+    <p>Caso ainda não possua uma conta, cadastre-se <a href="/cadastro">aqui</a>.</p>
+</section>
+
+<section class="beneficios">
+    <div class="container-fluid">
+      <h2>Benefícios do Cadastro:</h2>
+    </div>
+</section>
+{% endblock %}
+
+<!-- Script -->
+{% block script %}
+<script src="{% static 'scripts/entrar.js' %}"></script>
+{% endblock %}

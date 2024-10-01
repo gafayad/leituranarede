@@ -1,0 +1,55 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link href="{% static 'styles/sobre.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Sobre nós{% endblock %}
+
+<!-- Main -->
+{% block content %}
+<!-- Conteúdo -->
+<div style="margin-left:8vh;margin-top: 7vh;margin-right:8vh;color:black">
+  <h2><strong>A <span style="color:#003966">imprensa</span> como fonte de conhecimento</strong></h2>
+  <br>
+  <h3><strong>Por que a imprensa profissional?</strong></h3>
+  <ul>
+    <li><strong>Importância</strong></li>
+    <p style="color:black">O exercício da cidadania implica atitudes e ações norteadas pela opinião que temos sobre as questões que nos cercam. A imprensa profissional é fonte indispensável para o maior conhecimento, implicando melhor opinião.</p>
+    <li><strong>É confiável?</strong></li>
+    <p style="color:black">A imprensa profissional tem o compromisso de noticiar os fatos após investigados sob a ótica jornalística. Não raro, a imprensa profissional pauta o noticiário, subsidiando ações dos órgãos de investigação como Ministério Público, Polícia Federal e outros. Também não raro, a imprensa profissional traz à tona questões da máxima importância que ficariam ocultas para sempre. Por essas razões, a imprensa é vista como um ‘Quarto Poder’, o da informação.</p>
+    <li><strong>É imparcial?</strong></li>
+    <p style="color:black">As publicações da imprensa profissional dão espaço inclusive ao contraditório destacando ‘o outro lado’, evitando as perspectivas uniformes das ‘bolhas’ que são estimuladas nas redes sociais. As Big Techs convivem com uma significativa contradição. Ao mesmo tempo que propagam “notícias falsas’ e questionamentos da confiabilidade e da imparcialidade dos veículos da imprensa profissional, são também usuários dos produtos desses veículos, que são compartilhados em significativa dimensão. Recente estudo de Instituto ligado à Universidade de Columbia estima que o Google (serviço de busca) e o Facebook devem US$ 13 bi ao ano aos veículos noticiosos nos EUA. Cita o estudo que “A ideia é que Google e Facebook ganham porque os usuários querem conteúdo digno de confiança...”</p>
+    <li><strong>O <u>leituranarede</u> exemplificará as propriedades de confiável e imparcial ao longo do tempo.</strong></li>
+  </ul>
+  <br>
+  <br>
+  <h2><strong>Um pouco mais sobre o <span style="color:#003966"><u>leituranarede</u></span></strong></h2>
+  <br>
+  <h3><strong>Conteúdo disponível para consulta:</strong></h3>
+  <p style="color:black">As consultas no <u>leituranarede</u> serão atendidas a partir de um acervo com matérias selecionadas das edições digitais dos 3 maiores veículos da imprensa profissional.</p>
+  <ul>
+    <li><strong>O que não é:</strong></li>
+    <p style="color:black">O <span><u>leituranarede</u></span> não atenderá à atualidade propiciada pela assinatura das edições digitais dos veículos de imprensa considerados. O acervo que compõe a Base de Dados estará atualizado até o décimo dia anterior à data corrente.</p>
+    <li><strong>O que é:</strong></li>
+    <p style="color:black">O <span><u>leituranarede</u></span> se colocará como instrumento de exercício da Inteligência Natural do leitor. Para tanto, disponibilizará o noticiário segundo uma abordagem facilitadora da Percepção Construtiva, considerando os conceitos definidos pela Psicologia Cognitiva. Somente conhecendo as causas e a participação dos envolvidos na questão do seu interesse, você construirá a sua própria opinião, e estimará com propriedade os seus efeitos. Ilustrando: “Veja todo o filme”, não se contente com uma foto ou até mesmo uma cena em um vídeo, acompanhadas da opinião do remetente.</p>
+  </ul>
+  <br>
+  <div style="background-color: #003966;color:white;border-radius: 20px;">
+    <div style="margin:5vh">
+      <br>
+      <h4 style="margin-left: 4.5vh;"><strong>Para quem ele é destinado?</strong></h4>
+      <ul>
+        <li><h5><strong>Pessoas que buscam alternativa ao noticiário massivo, fragmentado e tendencioso vinculado permanentemente em plataformas digitais;</strong></h5></li>
+        <li><h5><strong>Participantes de processos seletivos que testem conhecimento (ENEM; vestibular; concurso; admissão em empresa...)</strong></h5></li>
+      </ul>
+      <br>
+    </div>
+  </div>
+</div>
+{% endblock %}
+
+<!-- Script -->
+{% block script %}
+<script src="{% static 'scripts/sobre.js' %}"></script>
+{% endblock %}

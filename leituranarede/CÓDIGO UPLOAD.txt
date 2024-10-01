@@ -1,0 +1,62 @@
+import os
+from django.core.management.base import BaseCommand
+from django.core.files import File
+from leituranarede.models import Arquivo
+from django.conf import settings
+import re
+import shutil
+
+class Command(BaseCommand):
+    help = 'Importa arquivos da pasta uploads para a base de dados e exclui os arquivos após a importação'
+
+    def handle(self, *args, **options):
+        # Caminho para a pasta uploads
+        upload_path = os.path.join(settings.MEDIA_ROOT, 'pdf')
+
+        # Caminho para a pasta de erro
+        erro_path = os.path.join(settings.MEDIA_ROOT, 'erro')
+
+        # Criar a pasta de erro se não existir
+        if not os.path.exists(erro_path):
+            os.makedirs(erro_path)
+
+        # Listar todos os arquivos na pasta uploads
+        for filename in os.listdir(upload_path):
+            file_path = os.path.join(upload_path, filename)
+            # Verificar se o nome do arquivo contém espaços ou ;
+            if ' ' in filename:
+                # Criar um nome temporário removendo caracteres problemáticos
+                nome_temporario = re.sub(r'[\\/:*?"<>|&!%@^#\$+=;,~()]', '', filename.replace(' ', '_'))
+                nome_temporario = nome_temporario.replace("'","")
+
+                # Caminho completo que deve ser registrado no banco de dados
+                caminho_arquivo_db_temporario = f'pdf/{nome_temporario}'
+
+                # Verificar se o arquivo com o nome temporário já está registrado
+                if Arquivo.objects.filter(arquivo=caminho_arquivo_db_temporario).exists():
+                    self.stdout.write(self.style.WARNING(f'O arquivo "{filename}" já está registrado no banco de dados. Não será importado!'))
+                    os.remove(file_path)
+                else:
+                    # Criar uma nova instância de Arquivo com o nome original
+                    with open(file_path, 'rb') as f:
+                        file_instance = File(f, name=filename)
+                        novo_arquivo = Arquivo(
+                            arquivo=file_instance,
+                        )
+                        try:
+                            # Salvar o arquivo e processar os dados
+                            novo_arquivo.save()
+                            self.stdout.write(self.style.SUCCESS(f'Arquivo {filename} importado com sucesso.'))
+
+                            # Excluir o arquivo após a importação bem-sucedida
+                            os.remove(file_path)
+
+                        except Exception as e:
+                            self.stdout.write(self.style.ERROR(f'Erro ao importar o arquivo "{filename}" - Verifique se o nome corresponde à padronização. \nErro: {e}.'))
+
+                            # Mover o arquivo para a pasta de erro
+                            erro_file_path = os.path.join(erro_path, filename)
+                            shutil.move(file_path, erro_file_path)
+                            self.stdout.write(self.style.WARNING(f'Arquivo movido para a pasta de erro.'))
+
+        self.stdout.write(self.style.SUCCESS('Importação concluída.'))

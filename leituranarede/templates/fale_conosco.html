@@ -1,0 +1,35 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link href="{% static 'styles/fale_conosco.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Contato{% endblock %}
+
+<!-- Main -->
+{% block content %}
+<!-- Conteudo -->
+<div style="margin-top: 12vh; margin-left: 12vh; margin-right: 12vh">
+  <h2>Fale Conosco:</h2>
+  <br>
+  <form>
+    <h2><strong>Seu E-Mail:</strong></h2>
+    <div class="form-group">
+      <input type="email" style="color: #0E426C;" class="form-control" id="email" aria-describedby="emailHelp" placeholder="E-Mail">
+    </div>
+    <br>
+    <div class="form-floating">
+      <textarea class="form-control" placeholder="Deixe sua mensagem aqui" id="mensagem" style="height: 100px"></textarea>
+      <label for="mensagem">Mensagem</label>
+    </div>
+    <br>
+    <button style="margin-left: 170vh; background-color: #0E426C; border-color: black;" type="submit" class="btn btn-primary">Enviar</button>
+  </form>
+  <br>
+</div>
+{% endblock %}
+
+<!-- Script -->
+{% block script %}
+<script src="{% static 'scripts/fale_conosco.js' %}"></script>
+{% endblock %}

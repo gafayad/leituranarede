@@ -1,0 +1,152 @@
+body {
+  font-family: "Poppins";
+  font-size: 16px;
+}
+
+/* Navbar */
+.navbar {
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+background: #0E426C;
+padding-top: 0px;
+padding-bottom: 0px;
+}
+
+.navbar-toggler-icon {
+background-image: url("data:image/svg+xml;charset=utf8,%3Csvg viewBox='0 0 32 32' xmlns='http://www.w3.org/2000/svg'%3E%3Cpath stroke='white' stroke-width='2' stroke-linecap='round' stroke-miterlimit='10' d='M4 8h24M4 16h24M4 24h24'/%3E%3C/svg%3E");
+}
+
+.navbar-toggler {
+border-color: white;
+} 
+
+.navbar-brand {
+font-size: 1.5rem;
+color: white;
+font-weight: bold;
+text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.nav-item {
+text-align: center;
+}
+
+.nav-link {
+font-size: 1rem;
+color: #fff;
+}
+
+.links {
+margin: auto;
+}
+
+.entrar {
+color: #ffff;
+font-size: 1rem;
+border-radius: 50px;
+border: 2px solid white;
+}
+
+.nav-link:hover, .navbar-brand:hover, .navbar-nav .nav-link.active {
+font-weight: bold;
+color: white;
+text-shadow: 0 3px 10px rgba(0, 0, 0, 0.5);
+}
+
+.offcanvas {
+background-color: #0E426C;
+}
+
+.offcanvas-title {
+color: white;
+font-size: 1.5rem;
+font-weight: bold;
+}
+
+/* Footer */
+.footer{
+background-color: #0E426C;
+position: relative;
+width: 100%;
+margin-bottom: -50px;
+}
+
+.footer h1 {
+font-size: 30px; 
+color: #81ABD9;
+}
+
+.footer a, .footer p {
+font-size: 16px; 
+color: white;
+text-decoration: none;
+}
+
+.footer a:hover {
+font-weight: bold;
+color: white;
+box-shadow: 0 3px 10px rgba(0, 0, 0, 0.15);
+}
+
+.responsive-image {
+  width: 100%;
+  height: auto;
+  max-width: 100%; /* Optional: ensures the image doesn't exceed its original size */
+}
+
+.sidebar {
+  background-color: #8EAAC1;
+}
+
+.sidebar-heading {
+font-size: 1.5rem;
+padding: 10px 10px;
+text-align: left;
+color: #ffff;
+}
+
+.sidebar .nav-link {
+font-size: 1rem;
+font-weight: 500;
+color: #ffff;
+text-align: left;
+}
+
+.sidebar .nav-link:hover {
+  color: #007bff;
+}
+
+.content h1, .content h2, .content h3, .content h4 {
+text-align: center;
+}
+
+.center {
+display: block;
+margin-left: auto;
+margin-right: auto;
+width: 300px;
+}
+.row{
+  --bs-gutter-x: none; 
+}
+
+.section {
+display: none;
+}
+
+.section.active{
+display: block;
+}
+
+.nav-buttons {
+text-align: center;
+margin-top: 20px;
+}
+
+.titulo {
+  font-weight: bold;
+  text-align: center;
+}
+
+.under {
+  text-decoration: underline;
+}

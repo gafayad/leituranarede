@@ -1,0 +1,84 @@
+<!-- SEPARAÇÃO DE ARQUIVO -->
+import re
+from datetime import datetime
+
+def process_filename(filename):
+    # Remover o pdf/:
+    nomeBase = filename.split('/')[-1]
+
+    # Data como separador entre os temas e o resto:
+    partes = re.split(r' \d{6} - ', nomeBase)
+
+    # Parte 1 - temas:
+    parte1 = partes[0]
+    temas = parte1.split(' e ')
+
+    # Data e formatação dela:
+    procData = re.search(r'\d{6}', nomeBase)
+    dataNum = procData.group()
+    data = datetime.strptime(dataNum, '%y%m%d').strftime('%d/%m/%Y')
+
+    # Parte 2 - Assunto, filme e fonte:
+    if ';' in partes[1]:
+        parte2 = re.split(r';', partes[1])
+        # Assunto:
+        assunto = parte2[0]
+
+        # Resumo e Fonte:
+        filme = ''
+        if len(parte2) > 2:
+            filme = parte2[1] + " -" + parte2[2]
+        else:
+            filme = parte2[1]
+    else:
+        # Sem ';', o assunto é vazio e o filme é o restante do texto após a data
+        assunto = ""
+        filme = partes[1]
+
+    # Remover .pdf e fonte do filme:
+    filme = re.sub(r'(?:\s*|[_\s])?(estadão|fsp|editorial)\s*(\([0-9]+\))?\s*\.pdf$', '', filme, flags=re.I).strip()
+
+    # Remover .pdf sozinho:
+    if filme.endswith('.pdf'):
+        filme = filme[:-4]
+
+    # Caso de Foto:
+    foto_match = re.search(r'\b(FOTO|FOTOs)\b', filme, flags=re.I)
+    # Se o texto tiver Foto:
+    if foto_match:
+        foto = f"{foto_match.group().upper()}"
+        partes_resumo = re.split(r'\b(FOTO|FOTOs)\b', filme, maxsplit=1, flags=re.I)
+        texto_principal = partes_resumo[0].strip().rstrip('_,. ')
+        descricao_foto = partes_resumo[2].strip() if len(partes_resumo) > 2 else ""
+
+        # Se a foto tiver descrição:
+        if descricao_foto:
+            filme = f"{texto_principal}. {foto}: {descricao_foto}"
+        else:
+            filme = f"{texto_principal}. {foto}"
+    # Se não:
+    else:
+        filme = filme.rstrip('-,; ')
+
+    # Ponto final no filme:
+    filme = filme + "."
+
+    # Definir as fontes:
+    fonte = "O Globo"  # Valor padrão
+    if 'fsp' in partes[1].lower() or 'editorial fsp' in partes[1].lower():
+        fonte = "Folha de S. Paulo"
+    elif 'estadão' in partes[1].lower() or 'editorial estadão' in partes[1].lower():
+        fonte = "Estadão"
+
+    return {
+        'partes': partes[1],
+        'temas': temas,
+        'data': data,
+        'assunto': assunto,
+        'filme': filme,
+        'fonte': fonte
+    }
+
+a = "Eleições 2024 e Plataformas Digitais 240504 - Após decisão do TSE, X remove Brasil da lista de países onde os anúncios políticos são permitidos  Estadão.pdf"
+
+print(process_filename(a))

@@ -1,0 +1,45 @@
+/* Titulo */
+
+.title h1{
+  font-weight: bold;
+  text-align: center;
+}
+
+/* Filtros */
+#dateFields {
+  display: none;
+}
+
+.form-select, .form-control{
+  border-radius: 50px;
+  border: 1px solid black;
+}
+
+#pdfViewer {
+  width: 100%;
+  height: 600px;
+  overflow: auto;
+  background: #333; /* ou a cor de fundo desejada */
+}
+canvas {
+  display: block;
+  margin: 0 auto;
+}
+
+.noticias a {
+  text-decoration: none;
+}
+
+.noticias erro {
+  color:red;
+}
+
+.pesquisar {
+  border-radius: 50px;
+  background-color: #0E426C;
+  border: 1px solid black;
+}
+
+.nova-pesquisa {
+  border-radius: 50px;
+}

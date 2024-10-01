@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+{% load static %}
+{% block styles %}
+  <link href="{% static 'styles/cadastro.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Cadastro{% endblock %}
+
+<!-- Main -->
+{% block content %}
+<!-- Cadastro -->
+<div class="cadastro">
+  <h1>Cadastro:</h1>
+  <form id="cadastroForm">
+    <div>
+      <label for="nome" class="form-label">Nome completo:</label>
+      <input type="text" class="form-control" id="nome" placeholder="Nome">
+      <div class="erro" id="nomeError">*Por favor, preencha o nome completo.</div>
+    </div>
+    <div>
+      <label for="telefone" class="form-label">Telefone:</label>
+      <input type="tel" class="form-control" id="telefone" placeholder="DDD + Telefone">
+      <div class="erro" id="telefoneError">*Por favor, insira um número de telefone válido.</div>
+    </div>
+    <div>
+      <label for="email" class="form-label">Email:</label>
+      <input type="email" class="form-control" id="email" placeholder="Email">
+      <div class="erro" id="emailError">*Por favor, insira um email válido.</div>
+    </div>
+    <div class="position-relative">
+      <label for="senha" class="form-label">Senha:</label>
+      <div class="input-group">
+        <input type="password" class="form-control" id="senha" placeholder="Senha">
+        <span class="input-group-text">
+          <i class="far fa-eye" id="toggleSenha" style="cursor: pointer;"></i>
+        </span>
+      </div>
+      <div class="erro" id="senhaRequisitos">*A senha deve ter no mínimo 8 caracteres, incluindo letras maiúsculas, minúsculas, números e caracteres especiais (ex: @, $, !, %, *, ?, &).</div>
+    </div>
+    <div class="position-relative">
+      <label for="confirmar_senha" class="form-label">Confirme a senha:</label>
+      <div class="input-group">
+        <input type="password" class="form-control" id="confirmar_senha" placeholder="Confirmar Senha">
+        <span class="input-group-text">
+          <i class="far fa-eye" id="toggleConfirmarSenha" style="cursor: pointer;"></i>
+        </span>
+      </div>
+      <div class="erro" id="senhaError">*As senhas não coincidem.</div>
+    </div>
+    <div class="d-grid gap-2 justify-content-sm-end envio">
+      <button type="submit" class="btn btn-lg float-right">Enviar</button>
+    </div>
+  </form>
+</div>
+{% endblock %}
+
+<!-- Script -->
+{% block script %}
+<script src="{% static 'scripts/cadastro.js' %}"></script>
+{% endblock %}

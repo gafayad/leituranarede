@@ -1,0 +1,66 @@
+{% extends "base_dicas.html" %}
+{% load static %}
+{% block styles %}
+  <link href="{% static 'styles/dicas.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Dicas de uso{% endblock %}
+
+<!-- Main -->
+{% block content %}
+<!-- Conteúdo -->
+<div class="container-fluid mensagens">
+  <br>
+  <h1>Dicas de Uso</h1>
+  <br>
+  <h5>Inicie a consulta especificando os parâmetros:
+  <div style="padding-left:8vh">Ordenação cronológica crescente ou decrescente na exibição dos resultados da pesquisa;
+  <br>Período das publicações das matérias; e
+  <br>Fonte das matérias (Estadão ou Globo).
+  </div>
+  <br>Opções de consulta:
+    <div style="padding-left:8vh">
+  1 – Para consultar matérias específicas:
+      <div style="padding-left:8vh">
+  Digite as palavras que definem o objeto do seu interesse, como por exemplo:
+  <br>Saúde exercícios; ou
+  <br>Tecnologia Inteligência artificial regulação; ou
+  <br>Governo “Nome do presidente” Educação; ou
+  <br>Literatura Livro...
+      </div>
+  2 – Para navegar pelo conteúdo disponível:
+      <div style="padding-left:8vh">
+  Digite o tema do seu intreresse;
+  Observe o exibido como resposta da consulta; e
+  Complemente a digitação com os termos necessários a “filtrar” as matérias do seu interesse.
+      </div>
+  Nas duas opções, as matérias exibidas como resposta poderão ser “filtradas”, complementando a
+  digitação com os termos necessários.
+  <br>
+      <br>Opções adicionais de “filtros” das matérias exibidas:
+  <br>Digitado “Editorial”, será exibido o texto que representa a opinião da fonte (Estadão ou Globo);
+  <br>Digitado o nome de um articulista, será exibido o texto que representa a opinião desse jornalista.
+    </div>
+  <br>Resultado da Consulta:
+  <br>
+    <div style="padding-left:8vh">Será apresentado um ‘browser” contendo os resumos de todas as matérias publicadas, segundo os parâmetros
+  especificados (ordenação, período e fonte ), permitindo ao visitante tomar conhecimento do histórico de todo os
+  eventos ocorridos com relação ao objeto da consulta.
+  <br>Uma vez selecionado o resumo de uma matéria, será exibida a página com o conteúdo da matéria, permitindo a
+  leitura do texto completo a respeito.
+    </div>
+<!--
+  Compartilhamento:
+  <br>
+    <div style="padding-left:8vh">Somente será permitido com relação ao “browser’
+  <br>O compartilhamento das matérias é atendido pelas assinaturas digitais das fontes consideradas (Estadão e
+  Globo).</div></h5> -->
+
+</div>
+<br>
+{% endblock %}
+
+<!-- Script -->
+{% block script %}
+<script src="{% static 'scripts/dicas.js' %}"></script>
+{% endblock %}

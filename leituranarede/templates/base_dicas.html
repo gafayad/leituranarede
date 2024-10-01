@@ -1,0 +1,60 @@
+{% extends "base.html" %}
+
+{% block navbar %}
+<!-- Barra de navegação -->
+<header>
+  <nav class="navbar navbar-expand-lg">
+    <div class="container-fluid">
+      <a class="navbar-brand me-auto" href="/">LEITURA NA REDE</a>
+      <div class="offcanvas offcanvas-end" tabindex="-1" id="offcanvasNavbar" aria-labelledby="offcanvasNavbarLabel">
+        <div class="offcanvas-header">
+          <h5 class="offcanvas-title" id="offcanvasNavbarLabel">Leitura na rede</h5>
+          <button type="button" class="btn-close" data-bs-dismiss="offcanvas" aria-label="Close"></button>
+        </div>
+        <div class="offcanvas-body">
+          <ul class="navbar-nav ms-auto">
+            <div class="links container-fluid">
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'home' %}active{% endif %}" href="/home">HOME</a>
+              </li>
+            </div>
+            <div class="links container-fluid">
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'imprensa' %}active{% endif %}" aria-current="page" href="/imprensa">IMPRENSA</a>
+              </li>
+            </div>
+            <div class="links container-fluid">
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'testes' %}active{% endif %}" aria-current="page" href="/testes">Testes</a>
+              </li>
+            </div>
+            <div class="links container-fluid">
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'livros' %}active{% endif %}" href="/livros">LIVROS</a>
+              </li>
+            </div>
+            <div class="links container-fluid">
+              <li class="nav-item">
+                <a class="nav-link {% if request.resolver_match.url_name == 'sobre' %}active{% endif %}" href="/sobre">SOBRE</a>
+              </li>
+            </div>
+            <div class="links container-fluid">
+              <li class="nav-item">
+                <a href="/dicas" class="nav-link {% if request.resolver_match.url_name == 'dicas' %}active{% endif %}"> DICAS DE USO</a>
+              </li>
+            </div>
+            <div class="links container-fluid">
+              <li class="nav-item">
+                <a class="nav-link" href="/contato">CANAIS DE COMUNICAÇÃO</a>
+              </li>
+            </div>
+          </ul>
+        </div>
+      </div>
+      <button class="navbar-toggler" type="button" data-bs-toggle="offcanvas" data-bs-target="#offcanvasNavbar" aria-controls="offcanvasNavbar" aria-label="Toggle navigation">
+        <span class="navbar-toggler-icon"></span>
+      </button>
+    </div>
+  </nav>
+</header>
+{% endblock %}

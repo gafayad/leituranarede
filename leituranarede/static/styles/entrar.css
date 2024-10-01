@@ -1,0 +1,48 @@
+/* Login */
+.login {
+  padding: 2vh 1vw 2vh 1vw;
+}
+
+.login h1 {
+  font-weight: bold;
+}
+
+.login a {
+  color: #0E426C;
+  text-decoration: none;
+  font-weight: 600;
+}
+
+.login a:hover{
+  color: #196eb3;
+}
+
+.form-control{
+  border-color: #0E426C;
+  border-radius: 50px;
+}
+
+.btn{
+  background-color: #0E426C; 
+  color: white;
+  border-radius: 50px;
+  margin-top: 1vh;
+  transition: all 0.3s ease;
+}
+
+.btn:hover{
+  background-color: #13558b;
+  color: white;
+  transform: scale(1.1);
+}
+
+.erro {
+  color: red; 
+  display: none;
+  font-size: .8rem;
+}
+
+/* Benefícios */
+.beneficios h2 {
+  font-weight: bold;
+}

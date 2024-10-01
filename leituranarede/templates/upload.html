@@ -1,0 +1,21 @@
+{% extends "base_dicas.html" %}
+{% load static %}
+{% block styles %}
+  <link href="{% static 'styles/imprensa.css' %}" rel="stylesheet"/>
+{% endblock %}
+
+{% block title %}Uploads{% endblock %}
+{% block content %}
+<form action="{% url 'list' %}" method="post" enctype="multipart/form-data">
+  {% csrf_token %}
+  <p>
+    {{ form.file }}
+  </p>
+  <p><input type="submit" value="Upload" /></p>
+</form>
+{% endblock %}
+
+<!-- Script -->
+{% block script %}
+<script src="{% static 'scripts/imprensa.js' %}"></script>
+{% endblock %}

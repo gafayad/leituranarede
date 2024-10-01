@@ -1,0 +1,133 @@
+{% extends "imprensa.html" %}
+{% load static %}
+
+{% block title %}Resultado da busca{% endblock %}
+
+<!-- Main -->
+{% block content %}
+    <!-- Titulo -->
+    <div class="title container mt-4">
+      <h1><span style="color: #0E426C;">Imprensa</span> como fonte de conhecimento</h1>
+    </div>
+    
+    <!-- Navegação de Páginas -->
+    <div class="container d-flex justify-content-end mb-1">
+      <div class="d-flex align-items-center">
+          <span>{{ page_obj.start_index }}~{{ page_obj.end_index }} de {{ page_obj.paginator.count }}</span>
+          <div class="ms-3">
+              {% if page_obj.has_previous %}
+                  <a href="?page={{ page_obj.previous_page_number }}{% if request.GET %}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% endif %}" class="btn btn-secondary btn-sm">
+                      &lt;
+                  </a>
+              {% else %}
+                  <button class="btn btn-secondary btn-sm" disabled>
+                      &lt;
+                  </button>
+              {% endif %}
+              {% if page_obj.has_next %}
+                  <a href="?page={{ page_obj.next_page_number }}{% if request.GET %}{% for key, value in request.GET.items %}{% if key != 'page' %}&{{ key }}={{ value }}{% endif %}{% endfor %}{% endif %}" class="btn btn-secondary btn-sm">
+                      &gt;
+                  </a>
+              {% else %}
+                  <button class="btn btn-secondary btn-sm" disabled>
+                      &gt;
+                  </button>
+              {% endif %}
+          </div>
+      </div>
+    </div>
+    
+    <!-- Pesquisa -->
+    <div class="container pesquisado">
+      <h2>Resultados para: <strong>{{ request.GET.barra_pesquisa }}</strong></h2>
+      <p>Encontrado: {{ page_obj.paginator.count }} resultados</p>
+    </div>
+    
+    <!-- Filtro -->
+    <div class="container">
+        <form class="row g-3 align-items-center" method="get" action="/buscar">
+            <!-- Campo de Ordenação -->
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-center mb-3">
+                <label for="ordenacao" class="col-form-label me-2">Ordenação</label>
+                <select id="ordenacao" name="ordenacao" class="form-select" placeholder="{{ form.get.ordenacao }}">
+                    <option value="mais_recentes"{% if form.ordenacao.value == "mais_recentes" %}selected{% endif %}>Mais recentes</option>
+                    <option value="mais_antigos"{% if form.ordenacao.value == "mais_antigos" %}selected{% endif %}>Mais antigos</option>
+                </select>
+            </div>
+        
+            <!-- Campo de Período -->
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-center mb-3">
+                <label for="periodo" class="col-form-label me-2">Período</label>
+                <select id="periodo" name="periodo" class="form-select" onchange="toggleDateFields(this.value)" >
+                    <option value="completo"{% if form.periodo.value == "completo" %}selected{% endif %}>Completo</option>
+                    <option value="ultimo_mes"{% if form.periodo.value == "ultimo_mes" %}selected{% endif %}>Último mês</option>
+                    <option value="ultimos_3_meses"{% if form.periodo.value == "ultimos_3_meses" %}selected{% endif %}>Últimos 3 meses</option>
+                    <option value="ultimos_6_meses"{% if form.periodo.value == "ultimos_6_meses" %}selected{% endif %}>Últimos 6 meses</option>
+                    <option value="de/ate"{% if form.periodo.value == "de/ate" %}selected{% endif %}>De / até:</option>
+                </select>
+            </div>
+        
+            <!-- Campos de Data (De/Até) -->
+            <div id="dateFields" class="col-lg-4 col-md-6 col-sm-12 align-items-center mb-3" style="display: none;">
+                <label for="dataInicio" class="col-form-label me-2">De</label>
+                <input type="date" id="dataInicio" name="data_inicio" class="form-control me-2">
+                <label for="dataFim" class="col-form-label me-2">Até</label>
+                <input type="date" id="dataFim" name="data_fim" class="form-control">
+            </div>
+        
+            <!-- Campo de Fonte -->
+            <div class="col-lg-4 col-md-6 col-sm-12 d-flex align-items-center mb-3">
+                <label for="fonte" class="col-form-label me-2">Fonte<span style="color: red;">*</span></label>
+                <select id="fonte" name="fonte" class="form-select" placeholder="Selecionar...">
+                    <option value="Estadão"{% if form.fonte.value == "Estadão" %}selected{% endif %}>Estadão</option>
+                    <option value="O Globo"{% if form.fonte.value == "O Globo" %}selected{% endif %}>O Globo</option>
+                    <option value="Folha de S. Paulo"{% if form.fonte.value == "Folha de S. Paulo" %}selected{% endif %}>Folha de S. Paulo</option>
+                </select>
+            </div>
+        
+            <!-- Barra de Pesquisa -->
+            <div class="pesquisa container">
+              <div class="row">
+                  <div class="col-lg-10">
+                      <input name="barra_pesquisa" type="text" id="searchInput" class="form-control" placeholder="Pesquisar assunto..." value="{{ request.GET.barra_pesquisa }}">
+                  </div>
+                  <div class="col-lg-2">
+                      <button type="submit" class="pesquisar btn btn-primary w-100">Pesquisar</button>
+                  </div>
+              </div>
+            </div>
+        </form>
+    </div>
+        
+    <!-- Lista de notícias -->
+    <div class="noticias container mt-3">
+        <table>
+            {% for value in arquivos %}
+            <tbody >
+                <strong>{{ value.data|date:"d/m/Y" }}: </strong><a href="{{ value.arquivo.url }}" class="pdf-popup"> {{ value.assunto }}: {{ value.filme }}</a><br>
+                {% empty %}
+                <p style="color: red;">Nenhum resultado encontrado, verifique se a busca está correta. Consulte <a style="color: red;" href="/dicas/"><strong>Dicas de uso</strong></a></p>
+            </tbody>
+            {% endfor %}
+        </table>
+    </div>
+    
+    <!-- Popup dos PDFs -->
+    <div class="modal fade" id="pdfModal" tabindex="-1" aria-labelledby="pdfModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-lg modal-dialog-centered">
+            <div class="modal-content" style="background-color: transparent; border: none;">
+                <div class="modal-body">
+                    <div class="pdf-container">
+                        <iframe id="pdfIframe" width="100%" height="600px" title="PDF Viewer" toolbar= "0" frameborder="0" allowfullscreen></iframe>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+      
+    <!-- Nova Pesquisa -->
+    <div class="container d-flex justify-content-end mt-3 mb-2">
+        <a href="/imprensa" class="nova-pesquisa btn btn-secondary">Nova Pesquisa</a>
+    </div>
+
+{% endblock %}  
