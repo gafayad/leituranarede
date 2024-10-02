@@ -8,16 +8,20 @@ document.addEventListener('DOMContentLoaded', function() {
       var pdfUrl = window.location.origin + $(this).attr('href');
       var pdfTitle = $(this).data('title');
 
+      // URL do Google Docs Viewer
+      var googleDocsViewerUrl = 'https://docs.google.com/gview?url=' + encodeURIComponent(pdfUrl) + '&embedded=true';
+
       // Configura o título do modal (opcional)
       $('#pdfModalLabel').text(pdfTitle);
 
-      // Configura o src do iframe para carregar o PDF
-      $('#pdfIframe').attr('src', pdfUrl);
+      // Configura o src do iframe para carregar o PDF usando Google Docs Viewer
+      $('#pdfIframe').attr('src', googleDocsViewerUrl);
 
       // Abre o modal
       $('#pdfModal').modal('show');
   });
 });
+
 
 
 function toggleDateFields(value) {
