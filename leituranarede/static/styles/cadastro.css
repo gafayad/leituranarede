@@ -27,3 +27,7 @@
     display: none;
     font-size: .8rem;
 }
+
+.h1 {
+  font-weight: bold;
+}

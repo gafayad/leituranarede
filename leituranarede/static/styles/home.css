@@ -13,15 +13,61 @@
 }
 
 /* Carousel */ 
-.card img {
-  height: 10rem;
-  width: auto;
+.card {
+  height: 350px; /* Defina a altura desejada para os cards */
+  display: flex; /* Usar flexbox para organizar o conteúdo */
+  flex-direction: column; /* Organiza o conteúdo em coluna */
+  justify-content: space-between; /* Espaça o conteúdo uniformemente */
+  overflow: hidden; /* Oculta o conteúdo que excede a altura do card */
+  transition: height 0.3s ease; /* Adiciona uma transição suave ao expandir */
+}
+
+.card.expanded {
+  height: auto; /* Permite que o card expanda conforme o conteúdo */
+}
+
+.card-img-top {
+  max-height: 10rem; /* Altura máxima para a imagem */
+  object-fit: cover; /* Garante que a imagem preencha o espaço sem distorção */
+}
+
+.card-text.preview {
+  overflow: hidden; /* Esconde o excesso de texto */
+  text-overflow: ellipsis; /* Adiciona '...' ao final do texto que não cabe */
+  display: -webkit-box; /* Para o efeito de truncamento em navegadores */
+  -webkit-box-orient: vertical; /* Direção do box layout */
+  -webkit-line-clamp: 2; /* Limita a 3 linhas de texto */
 }
 
 .card-title{
   font-size: 1.5rem;
 }
 
-.card-texto{
+.card-text{
   font-size: 1rem;
+  margin-bottom: 0px;
+  margin-top: auto;
+}
+
+/* Estilo para o botão de 'Veja mais' */
+.see-more-btn {
+  background: none;
+  border: none;
+  color: #007bff;
+  cursor: pointer;
+  font-size: 14px;
+}
+
+.text-right {
+  text-align: right;
+}
+
+.see-more-btn .arrow {
+  font-size: 16px;
+  transition: transform 0.5s ease;
+}
+
+/* Inicialmente, o texto completo está escondido */
+.full-content {
+  display: none;
 }
