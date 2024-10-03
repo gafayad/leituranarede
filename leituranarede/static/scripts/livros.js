@@ -21,10 +21,10 @@ document.addEventListener("DOMContentLoaded", function() {
 
   function updateButtonVisibility() {
     // Oculta o botão "Anterior" na primeira seção
-    prevButton.style.display = currentSectionIndex === 0 ? "none" : "inline-block";
+    prevButton.classList.toggle("hidden", currentSectionIndex === 0);
 
     // Oculta o botão "Próximo" na última seção
-    nextButton.style.display = currentSectionIndex === sections.length - 1 ? "none" : "inline-block";
+    nextButton.classList.toggle("hidden", currentSectionIndex === sections.length - 1);
   }
 
   nextButton.addEventListener("click", () => {
@@ -45,5 +45,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
+  // Inicializa a primeira seção
   showSection(currentSectionIndex);
 });
