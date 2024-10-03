@@ -7,12 +7,23 @@
 
 {% block title %}Livros{% endblock %}
 
+{% block botao %}
+<!-- Botão Anterior -->
+<div id="prev" class="nav-button">
+  <i class="fas fa-arrow-left"></i>
+</div>
+<!-- Botão Próximo -->
+<div id="next" class="nav-button">
+  <i class="fas fa-arrow-right"></i>
+</div>
+{% endblock %}
+
 {% block content %}
 <main>
-    <div class="indice row">
+    <div class="row">
         <!-- Barra lateral -->
         <nav id="sidebar" class="col-md-3 col-lg-2 d-md-block sidebar">
-            <div class="position-sticky">
+            <div class="position-sticky mt-4 mb-2">
               <h4 class="sidebar-heading">Índice</h4>
               <ul class="nav flex-column">
                   <li class="nav-item">
@@ -88,7 +99,7 @@
             </div>
     </nav>
         <!-- Livro -->
-        <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 content">
+        <div class="col-md-9 ms-sm-auto col-lg-10 px-md-4 mt-5 mb-2 content">
                 <section id="capa" class="section active">
                 <h1>Vida Normal</h1>
                 <br>
@@ -98,14 +109,14 @@
                 <br>
                 <br>
                 <br>
-                <p style="text-align: center">Auto-ajuda<br>Registrado sob n° 368.761 no<br>Escritório de Direitos Autorais da Biblioteca Nacional<br>Junho/2006</p>
+                <p>Auto-ajuda<br>Registrado sob n° 368.761 no<br>Escritório de Direitos Autorais da Biblioteca Nacional<br>Junho/2006</p>
                 <br>
                 <br>
                 <br>
                 <br>
                 <br>
                 <br>
-                <p style="text-align: center">Autor: William Soares Muniz - wsmuniz30@gmail.com</p>
+                <p>Autor: William Soares Muniz - wsmuniz30@gmail.com</p>
                 </section> <!-- Feito -->
 
                 <section id="dedicatoria" class="section">
@@ -116,10 +127,10 @@
 
                 <section id="introducao" class="section">
                 <h1>Vida Normal !!!</h1>
-                <p style="text-align: center">Dizem os médicos, denotando sucesso.</p>
-                <br>
-                <p style="text-align: center">E em muitas ocasiões, nem sucesso nem vida normal.</p>
-                <p style="text-align: center">Por que?</p>
+                <p>Dizem os médicos, denotando sucesso.</p>
+                <p>E em muitas ocasiões, nem sucesso nem vida normal.</p>
+                <p>Por que?</p>
+                <p style="color: red; font-size:0.8rem; font-weight: bold">*Atenção: conteúdo sensível com a imagem de cirurgia.</p>
                 </section> <!-- Feito -->
 
                 <section id="aos-leitores" class="section">
@@ -2383,12 +2394,8 @@ Fui informado que o problema se deu por conta da demora na disponibilidade do Ta
 
 
                 </section>
-
-              <div class="nav-buttons">
-                <button id="prev" class="btn btn-secondary">Anterior</button>
-                <button id="next" class="btn btn-secondary">Próximo</button>
-              </div>
         </div>
+        
     </div>
 </main>
 {% endblock %}

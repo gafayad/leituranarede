@@ -14,20 +14,37 @@
 <div class="banner">
       <img src="{% static 'images/banner leituranarede.jpg' %}" alt="Imagem de fundo" class="responsive-image">
 </div>
+
 <!-- Carrossel -->
-<section id="carousel" class="carousel owl-carousel">
+<section id="carousel" class="carousel owl-carousel mt-2 mb-2">
   {% for cartao in cartoes %}
   <div class="item">
     <div class="card">
       <img src="{{ cartao.get_imagem }}" class="card-img-top" alt="{{ cartao.titulo }}">
       <div class="card-body">
         <h1 class="card-title">{{ cartao.titulo }}</h1>
-        <p class="card-text">{{ cartao.descricao|linebreaksbr }}</p>
+
+        <!-- Exibe apenas o início do texto -->
+        <p class="card-text preview">{{ cartao.descricao|truncatewords:10 }}</p> <!-- Truncate para limitar a visualização -->
+
+        <!-- Conteúdo oculto que será expandido -->
+        <div class="card-text full-content" style="display: none;"> 
+          <p>{{ cartao.descricao|linebreaksbr }}</p> 
+        </div>
+
+        <!-- Contêiner para o botão alinhado à direita -->
+        <div class="text-right">
+          <button class="see-more-btn">
+            Veja mais <i class="fas fa-chevron-down arrow"></i>
+          </button>
+        </div>
       </div>
     </div>
   </div>
   {% endfor %}
 </section>
+
+
 
 
 {% endblock %}
