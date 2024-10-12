@@ -41,12 +41,15 @@
 
 .card-title{
   font-size: 1.5rem;
+  color: #0E426C;
+  font-weight: bold;
 }
 
 .card-text{
   font-size: 1rem;
   margin-bottom: 0px;
   margin-top: auto;
+  font-style: italic;
 }
 
 /* Estilo para o botão de 'Veja mais' */
