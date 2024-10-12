@@ -3,9 +3,9 @@ document.addEventListener('DOMContentLoaded', function() {
     owl.owlCarousel({
         nav: false,
         dots: false,
-        loop: true,
+        loop: false,
         margin: 12,
-        autoplay: true,
+        autoplay: false,
         autoplayTimeout: 4000,
         autoplayHoverPause: true,
         responsive: {
