@@ -11,7 +11,7 @@ class Cartao(models.Model):
     imagem_url = models.URLField(blank=True, null=True)
     imagem_upload = models.ImageField(upload_to='cartoes/', blank=True, null=True)
     titulo = models.CharField(max_length=200)
-    descricao = models.TextField(max_length=650)
+    descricao = models.TextField(max_length=900)
     ordem = models.PositiveIntegerField()
 
     class Meta:
