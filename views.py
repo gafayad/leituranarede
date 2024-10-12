@@ -9,6 +9,7 @@ from datetime import date, timedelta
 from django.db.models import Q
 import re
 
+
 # Create your views here.
 def home(request):
     cartoes = Cartao.objects.all()
