@@ -30,9 +30,9 @@ def imprensa(request):
   documentos = Arquivo.objects.all()
   return render(request, 'imprensa.html', {'List': documentos})
 
-def testes(request):
-  documentos = Arquivo.objects.all()
-  return render(request, 'testes.html', {'List': documentos})
+#def testes(request):
+ # documentos = Arquivo.objects.all()
+  #return render(request, 'testes.html', {'List': documentos})
 
 def livros(request):
   return render(request, 'livros.html')
